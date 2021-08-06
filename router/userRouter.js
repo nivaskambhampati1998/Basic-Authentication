@@ -7,14 +7,7 @@ const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 const authenticate = require('../middlewares/authenticate');
 
-/*
-   User Router
-   Usage : Register a User
-   URL : http://127.0.0.1:5000/api/users/register
-   params : name , email , password
-   method : post
-   access : Public
- */
+// Register a user
 router.post('/register', [
     body('name').notEmpty().withMessage('Name is required'),
     body('email').notEmpty().withMessage('Email is required'),
@@ -63,14 +56,7 @@ router.post('/register', [
     }
 });
 
-/*
-   User Router
-   Usage : Login a User
-   URL : http://127.0.0.1:5000/api/users/login
-   params : email , password
-   method : post
-   access : Public
- */
+// Login 
 router.post('/login', [
     body('email').notEmpty().withMessage('Email is required'),
     body('password').notEmpty().withMessage('Password is required'),
@@ -117,14 +103,7 @@ router.post('/login', [
     }
 });
 
-/*
-   User Router
-   Usage : Get User Info
-   URL : http://127.0.0.1:5000/api/users/
-   params : no-fields
-   method : get
-   access : Private
- */
+// Get User Info
 router.get('/', authenticate , async (request , response) => {
     try {
         let user = await User.findOne({_id : request.user.id});
