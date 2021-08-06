@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGO_DB_URL, {
 
 // basic request
 app.get('/', (request , response) => {
-    response.send(`Welcome to Events Booking App`);
+    response.send(`Welcome to User Authentication`);
 });
 
 // router configuration
